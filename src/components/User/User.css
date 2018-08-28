@@ -4,5 +4,10 @@
 
 .user-video-audition iframe {
     width: 100%;
-    //height: auto;
+    /*height: auto;*/
+}
+
+.user-photo img {
+    width: 100%;
+    height: auto;
 }
