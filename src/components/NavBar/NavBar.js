@@ -1,61 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import payload from '../../resolvers/payload';
+import payload from '../../resolvers/payload';
 
 class NavBar extends Component {
 
     changeProfile = () => {
-        const token = localStorage.getItem('musique_token');
-
+        const token = localStorage.getItem('music_soul_token');
+        
         if (token !== null) {
-            return(<div></div>)
-        } else {
-            return(
-                <ul className="navbar-nav">
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/user">Welcome USER</Link>
-                    </li>
-                    {/*<li className="navbar-item">
-                        <Link className="nav-link" to={`/user/`}>Profile</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/movies">Movies</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/movies/add">Add Movies</Link>
-                    </li>*/}
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/logout">Logout</Link>
-                    </li>
-                </ul>
-            )
-        }
-        /*const token = localStorage.getItem('token');
-
-        if (token !== null) {
-
             let pl = payload(token);
+
             return(
                 <ul className="navbar-nav">
                     <li className="navbar-item">
-                        <Link className="nav-link" to="/perfil">Welcome, {pl.email}</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link className="nav-link" to={`/user/${pl.id}`}>Profile</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/movies">Movies</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link className="nav-link" to="/movies/add">Add Movies</Link>
+                        <Link className="nav-link" to="/user">Welcome, {pl.email}</Link>
                     </li>
                     <li className="navbar-item">
                         <Link className="nav-link" to="/logout">Logout</Link>
                     </li>
                 </ul>
             )
+            
         } else {
-
             return(
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
@@ -66,7 +32,8 @@ class NavBar extends Component {
                     </li>
                 </ul>
             )
-        }*/
+        }
+
     }
 
     render() {

@@ -22,7 +22,7 @@ class Login extends Component{
         login(this.state).then((resp) => {
             if (resp.status === 200) {
                 let token = resp.data.token;
-                localStorage.setItem('token', token);
+                localStorage.setItem('music_soul_token', token);
                 this.props.history.push('/');
             } else {
                 console.log(resp.data);
