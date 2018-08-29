@@ -18,7 +18,7 @@ class MusicianCard extends Component{
             <div className = "col-lg-4">
                 <div className = "col-mb-4 card-contour">
                     <div className = "card-body card-body-style">
-                        <img className = "card-img-top"/>
+                        <img className="card-img-top" alt="card-ilustration" />
                         <h4 className = "card-title">{this.state.user.firstName} {this.state.user.lastName}</h4>
                         <h6 className = "text-muted card-subtitle mb-6">{this.state.user.instrument.name}</h6>
                         <p className = "card-text">Toco un instrumento y bla bla bla bla.</p>

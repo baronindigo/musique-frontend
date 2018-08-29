@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import payload from '../../resolvers/payload';
 
+import './NavBar.css';
+
 class NavBar extends Component {
 
     changeProfile = () => {
@@ -14,6 +16,9 @@ class NavBar extends Component {
                 <ul className="navbar-nav">
                     <li className="navbar-item">
                         <Link className="nav-link" to={`/user/${pl.id}`}>Welcome, {pl.email}</Link>
+                    </li>
+                    <li className="navbar-item">
+                        <Link className="nav-link" to="/search">Search Musicians</Link>
                     </li>
                     <li className="navbar-item">
                         <Link className="nav-link" to="/logout">Logout</Link>
@@ -39,7 +44,7 @@ class NavBar extends Component {
     render() {
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <Link className="navbar-brand" to="/">Musique</Link>
+                <Link className="navbar-brand" to="/">MusicSoul</Link>
                 <button className="navbar-toggler" type="button" 
                     data-toggle="collapse" 
                     data-target="#navbarNavDropdown" 

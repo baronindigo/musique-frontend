@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-//import addUser from '../../services/addUser';
 import signup from '../../services/signup';
+
+import './Signup.css';
 
 class Signup extends Component {
 
@@ -52,8 +53,11 @@ class Signup extends Component {
                     <div className="row justify-content-center centered-form">
                         <div className="col-xs-12 col-sm-8 col-md-10 col-sm-offset-2 col-md-offset-4">
                             <div className="panel panel-default container">
+                                <div className="app-logo">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/musicsoul-3f0f9.appspot.com/o/music_soul.jpg?alt=media&token=a7d77c93-4688-45ce-85ca-a987265ee8e1" alt="App Logo Must be here" />
+                                </div>
                                 <div className="panel-heading">
-                                    <h3 className="panel-title">Please sign up for Netflix</h3>
+                                    <h3 className="panel-title">Please sign up for Music Soul</h3>
                                 </div>
                                 <div className="panel-body">
                                     <form onSubmit={this.onFormSubmit}>

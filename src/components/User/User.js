@@ -14,9 +14,8 @@ class Home extends Component {
     }
     
     componentDidMount() {
-        console.log("aqui si");
         singleUser(this.state.id).then((user) => {
-            console.log(user.data);
+
             let thisUser = user.data.data.singleUser;
             this.setState({
                 firstName  : thisUser.firstName,
@@ -27,7 +26,7 @@ class Home extends Component {
                 location   : thisUser.location,
                 photo      : thisUser.photo,
                 url        : thisUser.url,
-                //instrument : thisUser.instrument.id
+                instrument : thisUser.instrument.name
             })
         }).catch((err) => {
             console.log(err);
@@ -36,26 +35,20 @@ class Home extends Component {
     }
 
     loadAudition() {
-        //if (!this.state.movieData) {
-            
-        //} else {
-            //let url = this.youtubeParser(this.state.movieData.url)
-
-            const playerOptions = {
-                //height : '400',
-                //width  : '800',
-                playerVars : {
-                    autoplay : 1
-                }
+        const playerOptions = {
+            //height : '400',
+            //width  : '800',
+            playerVars : {
+                autoplay : 1
             }
+        }
 
-            return(
-                <YouTube 
-                    id="RVp5ldfuaus" 
-                    videoId="RVp5ldfuaus" 
-                    opts={playerOptions} />
-            )
-        //}
+        return(
+            <YouTube 
+                id="RVp5ldfuaus" 
+                videoId="RVp5ldfuaus" 
+                opts={playerOptions} />
+        )
     }
 
     render() {
@@ -75,8 +68,9 @@ class Home extends Component {
                         <div className=''> {this.state.phone} </div>
                         <div className=''> {this.state.genre} </div>
                         <div className=''> {this.state.location} </div>
+                        <div className=''> {this.state.instrument} </div>
                         <div className=''> {this.state.url} </div>
-                        <div className='user-video-audition'>{this.loadAudition()}</div>
+
                     </div>
                 </div>
             </div>

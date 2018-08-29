@@ -33,10 +33,12 @@ class Routes extends Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path='/logout' component={Logout} />
                     <Route exact path='/user' component={User} />
-                    <Route exact path = '/search' component = { Search } />
+                    <Route exact path='/home' component={Home} />
                     <Route exact path='/user/:id' component={User} />
                     <Route exact path='/user/edit/:id' component={UserEdit} />
                     <Route exact path='/user/delete/:id' component={UserDelete} />
+
+                    <Route exact path='/search' component={Search} />
 
                     {/*
                     <PrivateRoute exact path='/logout' component={Logout} />
