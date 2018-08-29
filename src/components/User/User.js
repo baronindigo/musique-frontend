@@ -19,14 +19,15 @@ class Home extends Component {
             console.log(user.data);
             let thisUser = user.data.data.singleUser;
             this.setState({
-                firstName : thisUser.firstName,
-                lastName  : thisUser.lastName,
-                email     : thisUser.email,
-                phone     : thisUser.phone,
-                genre     : thisUser.genre,
-                location  : thisUser.location,
-                photo     : thisUser.photo,
-                url       : thisUser.url
+                firstName  : thisUser.firstName,
+                lastName   : thisUser.lastName,
+                email      : thisUser.email,
+                phone      : thisUser.phone,
+                genre      : thisUser.genre,
+                location   : thisUser.location,
+                photo      : thisUser.photo,
+                url        : thisUser.url,
+                //instrument : thisUser.instrument.id
             })
         }).catch((err) => {
             console.log(err);
