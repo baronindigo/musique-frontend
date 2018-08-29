@@ -19,7 +19,11 @@ export default (id) => {
                         genre,
                         location,
                         photo,
-                        url
+                        urlYT,
+                        instrument {
+                            _id,
+                            name
+                        }
                     }
                 }`
         },

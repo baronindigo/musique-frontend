@@ -21,10 +21,9 @@ class UserEdit extends Component {
 
 
     componentDidMount() {
-        
-        console.log(this.props.match.params.id, '>>>>');
+
         singleUser(this.props.match.params.id).then((resp) => {
-            console.log(resp, '<><><>');
+debugger;
             this.setState({
                 userData   : resp.data.data.singleUser,
                 id         : resp.data.data.singleUser._id,
@@ -33,7 +32,7 @@ class UserEdit extends Component {
                 email      : resp.data.data.singleUser.email,
                 phone      : resp.data.data.singleUser.phone,
                 photo      : resp.data.data.singleUser.photo,
-                //instrument : resp.data.data.singleUser.instrument._id
+                //instrument : resp.data.data.instrument._id
             })
 
             console.log(this.state.firstName);
@@ -53,7 +52,7 @@ class UserEdit extends Component {
     createSelector = (data, name) => {
         console.log("createSelector");
         console.log(data);
-        debugger;
+
         let options = data.map((option) => {    
             return(
                 <option key={option._id} value={option._id}>{option.name}</option>
@@ -83,7 +82,7 @@ class UserEdit extends Component {
     onChangeInput = (e) => {
         let name = e.target.name
         let value = e.target.value
-
+debugger;
         this.setState({
             [name] : value
         })

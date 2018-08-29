@@ -3,7 +3,7 @@ import getToken from '../resolvers/getToken';
 import constantes from '../const';
 
 export default (id, data) => {
-    let {firstName, lastName, phone, email, photo } = data;
+    let {firstName, lastName, phone, email, photo, instrument } = data;
     return axios({
         url : constantes.local + 'graphql',
         method : 'post',
@@ -11,11 +11,12 @@ export default (id, data) => {
             query : 
                 `mutation {
                     updateUser(id:"${id}", data:{
-                        firstName : "${firstName}",
-                        lastName  : "${lastName}",
-                        email     : "${email}",
-                        phone     : "${phone}",
-                        photo     : "${photo}"
+                        firstName  : "${firstName}",
+                        lastName   : "${lastName}",
+                        email      : "${email}",
+                        phone      : "${phone}",
+                        photo      : "${photo}",
+                        instrument : "${instrument}",
                     }){
                         _id,
                         firstName,

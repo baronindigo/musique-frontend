@@ -23,7 +23,7 @@ class Login extends Component{
             if (resp.status === 200) {
                 let token = resp.data.token;
                 localStorage.setItem('music_soul_token', token);
-                this.props.history.push('/');
+                this.props.history.push('/home');
             } else {
                 console.log(resp.data);
             }
@@ -86,7 +86,7 @@ class Login extends Component{
                     <div className='login-page col-sm-8 col-md-8 col-lg-8'>
                         <div className='form'>
                             <div className="app-logo">
-                                <img src="https://via.placeholder.com/350x150" alt="App Logo Must be here" />
+                                <img src="https://firebasestorage.googleapis.com/v0/b/musicsoul-3f0f9.appspot.com/o/music_soul.jpg?alt=media&token=a7d77c93-4688-45ce-85ca-a987265ee8e1" alt="App Logo Must be here" />
                             </div>
                             <div className='panel panel-default'>
                                 <FormErrors formErrors={this.state.formErrors} />

@@ -15,7 +15,9 @@ class Search extends Component{
     componentDidMount(){
         allUsers().then((resp) => {
             console.log(resp.data);
-            this.state.users = resp.data.data.allUsers;
+            this.setState({
+                users : resp.data.data.allUsers
+            });
         }).catch((err) => {
             console.log(err);
         })
@@ -33,15 +35,18 @@ class Search extends Component{
         if(this.state.users !== ''){
             
             let players = this.state.users.map((user,index) => {
-                if(user.instrument._id === this.state.instrumentSelected){
-                    return(
-                        <MusicianCard
-                            key = {index}
-                            user = {user}
-                        />
-                    )
-                }
-            })
+                
+                
+                    if(user.instrument._id === this.state.instrumentSelected){
+                        return(
+                            <MusicianCard
+                                key = {index}
+                                user = {user}
+                            />
+                        )
+                    }
+                
+            });
             return players;
         }else{
             console.log("No existen datos.")
