@@ -8,6 +8,7 @@ import Logout from '../Logout/Logout';
 //import Signup from '../Signup/Signup';
 import NavBar from '../NavBar/NavBar';
 import User from '../User/User';
+import Search from '../Search/Search';
 
 class Routes extends Component {
 
@@ -28,6 +29,7 @@ class Routes extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path='/user' component={User} />
+                    <Route exact path = '/search' component = { Search } />
 
                     {/*<Route exact path="/signup" component={Signup} />*/}
 
