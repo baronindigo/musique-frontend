@@ -2,21 +2,25 @@ import axios from 'axios';
 import getToken from '../resolvers/getToken';
 import constant from '../const';
 
-
 export default () => {
     return axios({
         url: constant.url + 'graphql',
         method: 'post',
         data: {
-            query: `
+            query:`
                 query{
-                    allInstruments{
+                    allUsers{
                         _id,
-                        name
+                        firstName,
+                        lastName,
+                        instrument{
+                            name,
+                            _id
+                        },
+                        location
                     }
                 }
             `
         }, headers: {'Authorization':'JWT ' + getToken()}
-
     })
 }

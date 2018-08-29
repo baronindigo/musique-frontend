@@ -8,6 +8,7 @@ import Logout from '../Logout/Logout';
 import Signup from '../Signup/Signup';
 import NavBar from '../NavBar/NavBar';
 import User from '../User/User';
+import Search from '../Search/Search';
 import UserEdit from '../UserEdit/UserEdit';
 import UserDelete from '../UserDelete/UserDelete';
 
@@ -32,12 +33,10 @@ class Routes extends Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path='/logout' component={Logout} />
                     <Route exact path='/user' component={User} />
+                    <Route exact path = '/search' component = { Search } />
                     <Route exact path='/user/:id' component={User} />
                     <Route exact path='/user/edit/:id' component={UserEdit} />
                     <Route exact path='/user/delete/:id' component={UserDelete} />
-
-
-                    
 
                     {/*
                     <PrivateRoute exact path='/logout' component={Logout} />
