@@ -13,7 +13,7 @@ class NavBar extends Component {
             return(
                 <ul className="navbar-nav">
                     <li className="navbar-item">
-                        <Link className="nav-link" to="/user">Welcome, {pl.email}</Link>
+                        <Link className="nav-link" to={`/user/${pl.id}`}>Welcome, {pl.email}</Link>
                     </li>
                     <li className="navbar-item">
                         <Link className="nav-link" to="/logout">Logout</Link>

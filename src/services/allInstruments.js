@@ -17,5 +17,6 @@ export default () => {
                 }
             `
         }, headers: {'Authorization':'JWT ' + getToken()}
+
     })
 }
