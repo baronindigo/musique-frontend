@@ -3,7 +3,7 @@ import getToken from '../resolvers/getToken';
 import constantes from '../const';
 
 export default (id, data) => {
-    let {firstName, lastName, phone, email, photo, instrument } = data;
+    let {firstName, lastName, phone, email, photo, instrument, urlYT, urlFB, urlTW } = data;
     return axios({
         url : constantes.local + 'graphql',
         method : 'post',
@@ -17,6 +17,9 @@ export default (id, data) => {
                         phone      : "${phone}",
                         photo      : "${photo}",
                         instrument : "${instrument}",
+                        urlYT      : "${urlYT}",
+                        urlFB      : "${urlFB}",
+                        urlTW      : "${urlTW}",
                     }){
                         _id,
                         firstName,

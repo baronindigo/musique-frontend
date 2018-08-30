@@ -65,7 +65,7 @@ class SearchBar extends Component{
                             </li>
                         </ul>
                         <form className = "mr-auto"></form>
-                        <button className = "btn btn-light action-button" onClick = {() => this.props.searchActivity(this.state.instrument)}>Search</button>
+                        <button className="btn btn-light action-button" onClick = {() => this.props.searchActivity(this.state.instrument)}>Search</button>
                     </div>
                 </div>
             </nav>

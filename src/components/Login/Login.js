@@ -23,7 +23,7 @@ class Login extends Component{
             if (resp.status === 200) {
                 let token = resp.data.token;
                 localStorage.setItem('music_soul_token', token);
-                this.props.history.push('/home');
+                this.props.history.push('/search');
             } else {
                 console.log(resp.data);
             }
