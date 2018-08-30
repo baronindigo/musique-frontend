@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import Firebase from '../../Firebase';
 import FileUploader from 'react-firebase-file-uploader';
 
+import './UserEdit.css';
+
 class UserEdit extends Component {
 
     state = {
@@ -23,7 +25,6 @@ class UserEdit extends Component {
     componentDidMount() {
 
         singleUser(this.props.match.params.id).then((resp) => {
-debugger;
             this.setState({
                 userData   : resp.data.data.singleUser,
                 id         : resp.data.data.singleUser._id,
@@ -32,6 +33,9 @@ debugger;
                 email      : resp.data.data.singleUser.email,
                 phone      : resp.data.data.singleUser.phone,
                 photo      : resp.data.data.singleUser.photo,
+                urlYT      : resp.data.data.singleUser.urlYT,
+                urlFB      : resp.data.data.singleUser.urlFB,
+                urlTW      : resp.data.data.singleUser.urlTW
                 //instrument : resp.data.data.instrument._id
             })
 
@@ -82,7 +86,7 @@ debugger;
     onChangeInput = (e) => {
         let name = e.target.name
         let value = e.target.value
-debugger;
+
         this.setState({
             [name] : value
         })
@@ -103,48 +107,69 @@ debugger;
             )
         } else {
             return(
-                <div>
-                    <form onSubmit={this.handleSubmit}>
+                <div className="container">
+                    <div className="row">
+                        <div className="user-page col-sm-8 col-md-8 col-lg-8">
+                            <form onSubmit={this.handleSubmit}>
 
-                        <div className="form-group">
-                            <img src={this.state.photo} alt="Profile" />
-                            <FileUploader 
-                                accept="image/*"
-                                randomizeFilename
-                                storageRef={Firebase.storage().ref('images')}
-                                onUploadError={error => console.log(error)}
-                                onUploadSuccess={this.handlerUploadSuccess} />
+                                <div className="form-group user-photo">
+                                    <img src={this.state.photo} alt="Profile" />
+                                    <FileUploader 
+                                        accept="image/*"
+                                        randomizeFilename
+                                        storageRef={Firebase.storage().ref('images')}
+                                        onUploadError={error => console.log(error)}
+                                        onUploadSuccess={this.handlerUploadSuccess} />
+                                </div>
+
+                                <table>
+                                    <tr>
+                                        <td><label htmlFor="name">Name:</label></td>
+                                        <td><input type="text" name="firstName" value={this.state.firstName} onChange={this.onChangeInput}  /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="name">Lastname:</label></td>
+                                        <td><input type="text" name="lastName" value={this.state.lastName} onChange={this.onChangeInput}  /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="email">E-mail:</label></td>
+                                        <td><input type="email" name="email" value={this.state.email} onChange={this.onChangeInput}  /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="phone">Phone:</label></td>
+                                        <td><input type="text" name="phone" value={this.state.phone} onChange={this.onChangeInput} /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="urlYT">URL YouTube:</label></td>
+                                        <td><input type="text" name="urlYT" value={this.state.urlYT} onChange={this.onChangeInput} /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="urlFB">URL Facebook:</label></td>
+                                        <td><input type="text" name="urlFB" value={this.state.urlFB} onChange={this.onChangeInput} /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="urlTW">URL Twitter:</label></td>
+                                        <td><input type="text" name="urlTW" value={this.state.urlTW} onChange={this.onChangeInput} /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label htmlFor="instrument">Instrument: </label></td>
+                                        <td>{this.createSelector(this.state.allInstruments, "instrument")}</td>
+                                    </tr>
+                                </table>
+
+                                <Link className="btn btn-success" to={`/user/${this.state.id}`}>Back</Link>
+                                <button className="btn btn-info" type="submit">Update</button>
+                                <Link className="btn btn-danger" to={`/user/delete/${this.state.id}`}>Delete</Link>
+                            </form>
                         </div>
-
-                        <div className="form-group">
-                            <label htmlFor="name">Name:</label>
-                            <input type="text" name="firstName" value={this.state.firstName} onChange={this.onChangeInput}  />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="lastName">Lastname:</label>
-                            <input type="text" name="lastName" value={this.state.lastName} onChange={this.onChangeInput}  />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="email">E-mail:</label>
-                            <input type="email" name="email" value={this.state.email} onChange={this.onChangeInput}  />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone:</label>
-                            <input type="text" name="phone" value={this.state.phone} onChange={this.onChangeInput} />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="instrument">Instrument: </label>
-                            {this.createSelector(this.state.allInstruments, "instrument")}
-                        </div>
-
-                        <Link className="btn btn-info" to={`/user/${this.state.id}`}>Back</Link>
-                        <button className="btn btn-info" type="submit">Update</button>
-                        <Link className="btn btn-danger" to={`/user/delete/${this.state.id}`}>Delete</Link>
-                    </form>
+                    </div>
                 </div>
             )
         }

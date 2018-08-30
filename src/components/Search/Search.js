@@ -38,7 +38,8 @@ class Search extends Component{
         if(this.state.users !== ''){
             
             let players = this.state.users.map((user,index) => {
-                
+
+                if (user.instrument !== null) {
                     if(user.instrument._id === this.state.instrumentSelected){
                         return(
                             <MusicianCard
@@ -48,6 +49,7 @@ class Search extends Component{
                             />
                         )
                     }
+                }
                 
             });
             return players;
