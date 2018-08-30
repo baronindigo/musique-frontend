@@ -20,6 +20,8 @@ export default (id) => {
                         location,
                         photo,
                         urlYT,
+                        urlFB,
+                        urlTW,
                         instrument {
                             _id,
                             name

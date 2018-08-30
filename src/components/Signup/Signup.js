@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import signup from '../../services/signup';
+import Firebase from '../../Firebase';
+import FileUploader from 'react-firebase-file-uploader';
 
 import './Signup.css';
 
@@ -38,6 +40,14 @@ class Signup extends Component {
         }
     }
 
+    handlerUploadSuccess = (filename) => {
+        console.log(filename);
+        Firebase.storage().ref('images').child(filename)
+            .getDownloadURL().then((url) => {
+                this.setState({photo:url})
+            })
+    }
+
     onInputCheck = (event) => {
         let name  = event.target.name;
         let value = event.target.value;
@@ -62,6 +72,18 @@ class Signup extends Component {
                                 <div className="panel-body">
                                     <form onSubmit={this.onFormSubmit}>
                                         <div className="row">
+
+                                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div className="form-group">
+                                                <img src={this.state.photo} alt="Profile" />
+                                                <FileUploader 
+                                                    accept="image/*"
+                                                    randomizeFilename
+                                                    storageRef={Firebase.storage().ref('images')}
+                                                    onUploadError={error => console.log(error)}
+                                                    onUploadSuccess={this.handlerUploadSuccess} />
+                                                </div>
+                                            </div>
 
                                             <div className="col-xs-6 col-sm-6 col-md-6">
                                                 <div className="form-group">
