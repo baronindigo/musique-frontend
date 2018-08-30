@@ -11,6 +11,7 @@ import User from '../User/User';
 import Search from '../Search/Search';
 import UserEdit from '../UserEdit/UserEdit';
 import UserDelete from '../UserDelete/UserDelete';
+import Profile from '../Profile/Profile';
 
 class Routes extends Component {
 
@@ -38,7 +39,11 @@ class Routes extends Component {
                     <Route exact path='/user/edit/:id' component={UserEdit} />
                     <Route exact path='/user/delete/:id' component={UserDelete} />
 
+
                     <Route exact path='/search' component={Search} />
+                    <Route exact path='/profile/:id' component={Profile} />
+                    
+
 
                     {/*
                     <PrivateRoute exact path='/logout' component={Logout} />

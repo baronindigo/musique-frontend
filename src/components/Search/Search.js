@@ -29,6 +29,9 @@ class Search extends Component{
         })
     }
 
+    redirect = (id) => {
+        this.props.history.push(`/profile/${id}`)
+    }
 
     renderPlayers = () => {
         
@@ -42,6 +45,7 @@ class Search extends Component{
                             <MusicianCard
                                 key = {index}
                                 user = {user}
+                                redirect = {this.redirect}
                             />
                         )
                     }

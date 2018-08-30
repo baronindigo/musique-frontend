@@ -18,6 +18,7 @@ class Home extends Component {
         singleUser(this.state.id).then((user) => {
 
             let thisUser = user.data.data.singleUser;
+            debugger;
             this.setState({
                 firstName  : thisUser.firstName,
                 lastName   : thisUser.lastName,
