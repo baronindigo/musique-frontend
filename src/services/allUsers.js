@@ -17,7 +17,8 @@ export default () => {
                             name,
                             _id
                         },
-                        location
+                        location,
+                        photo
                     }
                 }
             `

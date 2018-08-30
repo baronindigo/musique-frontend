@@ -29,6 +29,9 @@ class Search extends Component{
         })
     }
 
+    redirect = (id) => {
+        this.props.history.push(`/profile/${id}`)
+    }
 
     renderPlayers = () => {
         
@@ -36,12 +39,12 @@ class Search extends Component{
             
             let players = this.state.users.map((user,index) => {
                 
-                
                     if(user.instrument._id === this.state.instrumentSelected){
                         return(
                             <MusicianCard
                                 key = {index}
                                 user = {user}
+                                redirect = {this.redirect}
                             />
                         )
                     }
