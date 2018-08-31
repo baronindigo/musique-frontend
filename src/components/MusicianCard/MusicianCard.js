@@ -27,7 +27,7 @@ class MusicianCard extends Component{
                         {this.loadPicture()}
                         <h4 className = "card-title">{this.state.user.firstName} {this.state.user.lastName}</h4>
                         <h6 className = "text-muted card-subtitle mb-6">{this.state.user.instrument.name}</h6>
-                        <p className = "card-text">Toco un instrumento y bla bla bla bla.</p>
+                        <p className = "card-text"></p>
                         <div className = "footer-social-media">
                             <Link className = "icon-separation" to = '#'><FaFacebook/></Link>
                             <Link to = '#'><FaTwitter/></Link>

@@ -25,28 +25,32 @@ class UserEdit extends Component {
     componentDidMount() {
 
         singleUser(this.props.match.params.id).then((resp) => {
+            let user = resp.data.data.singleUser;
+
             this.setState({
-                userData   : resp.data.data.singleUser,
-                id         : resp.data.data.singleUser._id,
-                firstName  : resp.data.data.singleUser.firstName,
-                lastName   : resp.data.data.singleUser.lastName,
-                email      : resp.data.data.singleUser.email,
-                phone      : resp.data.data.singleUser.phone,
-                photo      : resp.data.data.singleUser.photo,
-                urlYT      : resp.data.data.singleUser.urlYT,
-                urlFB      : resp.data.data.singleUser.urlFB,
-                urlTW      : resp.data.data.singleUser.urlTW
-                //instrument : resp.data.data.instrument._id
+                userData   : user,
+                id         : user._id,
+                firstName  : user.firstName,
+                lastName   : user.lastName,
+                email      : user.email,
+                phone      : user.phone,
+                photo      : user.photo,
+                urlYT      : user.urlYT,
+                urlFB      : user.urlFB,
+                urlTW      : user.urlTW,
             })
 
-            console.log(this.state.firstName);
+            if (user.instrument !== null) {
+                this.setState({
+                    instrument : user.instrument._id
+                })
+            }
+
         }).catch((err) => {
             console.log(err);
         })
 
         allInstruments().then((resp) => {
-            console.log(resp, '<<<');
-            console.log(resp.data.data.allInstruments)
             this.setState({allInstruments: resp.data.data.allInstruments})
         }).catch((err) => {
             console.log(err);
@@ -54,9 +58,6 @@ class UserEdit extends Component {
     }
 
     createSelector = (data, name) => {
-        console.log("createSelector");
-        console.log(data);
-
         let options = data.map((option) => {    
             return(
                 <option key={option._id} value={option._id}>{option.name}</option>
@@ -64,7 +65,7 @@ class UserEdit extends Component {
         })
         return(
             <select name={name} id={name} value={this.state[name]} onChange={this.onChangeInput} className="form-control">
-                <option value="" selected> --- </option>
+                <option value=""> --- </option>
                 {options}
             </select>
         )
@@ -72,8 +73,9 @@ class UserEdit extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state.userData);
+
         updateUser(this.props.match.params.id, this.state).then((resp) => {
-            console.log(resp.data.data);
             let id = resp.data.data.updateUser._id;
 
             this.props.history.push('/user/'+id)
@@ -123,45 +125,47 @@ class UserEdit extends Component {
                                 </div>
 
                                 <table>
-                                    <tr>
-                                        <td><label htmlFor="name">Name:</label></td>
-                                        <td><input type="text" name="firstName" value={this.state.firstName} onChange={this.onChangeInput}  /></td>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td><label htmlFor="name">Name:</label></td>
+                                            <td><input type="text" name="firstName" value={this.state.firstName} onChange={this.onChangeInput}  /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="name">Lastname:</label></td>
-                                        <td><input type="text" name="lastName" value={this.state.lastName} onChange={this.onChangeInput}  /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="name">Lastname:</label></td>
+                                            <td><input type="text" name="lastName" value={this.state.lastName} onChange={this.onChangeInput}  /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="email">E-mail:</label></td>
-                                        <td><input type="email" name="email" value={this.state.email} onChange={this.onChangeInput}  /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="email">E-mail:</label></td>
+                                            <td><input type="email" name="email" value={this.state.email} onChange={this.onChangeInput}  /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="phone">Phone:</label></td>
-                                        <td><input type="text" name="phone" value={this.state.phone} onChange={this.onChangeInput} /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="phone">Phone:</label></td>
+                                            <td><input type="text" name="phone" value={this.state.phone} onChange={this.onChangeInput} /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="urlYT">URL YouTube:</label></td>
-                                        <td><input type="text" name="urlYT" value={this.state.urlYT} onChange={this.onChangeInput} /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="urlYT">URL YouTube:</label></td>
+                                            <td><input type="text" name="urlYT" value={this.state.urlYT} onChange={this.onChangeInput} /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="urlFB">URL Facebook:</label></td>
-                                        <td><input type="text" name="urlFB" value={this.state.urlFB} onChange={this.onChangeInput} /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="urlFB">URL Facebook:</label></td>
+                                            <td><input type="text" name="urlFB" value={this.state.urlFB} onChange={this.onChangeInput} /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="urlTW">URL Twitter:</label></td>
-                                        <td><input type="text" name="urlTW" value={this.state.urlTW} onChange={this.onChangeInput} /></td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="urlTW">URL Twitter:</label></td>
+                                            <td><input type="text" name="urlTW" value={this.state.urlTW} onChange={this.onChangeInput} /></td>
+                                        </tr>
 
-                                    <tr>
-                                        <td><label htmlFor="instrument">Instrument: </label></td>
-                                        <td>{this.createSelector(this.state.allInstruments, "instrument")}</td>
-                                    </tr>
+                                        <tr>
+                                            <td><label htmlFor="instrument">Instrument: </label></td>
+                                            <td>{this.createSelector(this.state.allInstruments, "instrument")}</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
 
                                 <Link className="btn btn-success" to={`/user/${this.state.id}`}>Back</Link>

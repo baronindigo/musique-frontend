@@ -29,8 +29,7 @@ class Home extends Component {
                 photo      : thisUser.photo,
                 urlYT      : thisUser.urlYT,
                 urlFB      : thisUser.urlFB,
-                urlTW      : thisUser.urlTW,
-                
+                urlTW      : thisUser.urlTW
             })
 
             if (user.instrument !== null) {
@@ -126,44 +125,45 @@ class Home extends Component {
                             <div className="user-photo">
                                 <img src={this.state.photo} alt="Profile"/>
                             </div>               
-                            <div class="edit-button"><Link to={`/user/edit/${this.state.id}`} className="btn btn-info">Edit</Link></div>
+                            <div className="edit-button"><Link to={`/user/edit/${this.state.id}`} className="btn btn-info">Edit</Link></div>
                         </div>
 
                         <table>
-                            <tr>
-                                <td>Firstname:</td>
-                                <td>{this.state.firstName}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>Firstname:</td>
+                                    <td>{this.state.firstName}</td>
+                                </tr>
 
-                            <tr>
-                                <td>Lastname:</td>
-                                <td>{this.state.lastName}</td>
-                            </tr>
+                                <tr>
+                                    <td>Lastname:</td>
+                                    <td>{this.state.lastName}</td>
+                                </tr>
 
-                            <tr>
-                                <td>E-mail:</td>
-                                <td>{this.state.email}</td>
-                            </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>{this.state.email}</td>
+                                </tr>
 
-                            <tr>
-                                <td>Phone:</td>
-                                <td>{this.state.phone}</td>
-                            </tr>
+                                <tr>
+                                    <td>Phone:</td>
+                                    <td>{this.state.phone}</td>
+                                </tr>
 
-                            
-                            {this.loadGenre()}
-                            {this.loadLocation()}
-                            
+                                
+                                {this.loadGenre()}
+                                {this.loadLocation()}
+                                
 
-                            <tr>
-                                <td>Instrument:</td>
-                                <td>{this.state.instrument}</td>
-                            </tr>
+                                <tr>
+                                    <td>Instrument:</td>
+                                    <td>{this.state.instrument}</td>
+                                </tr>
 
-                            {this.loadYTLink()}
-                            {this.loadFBLink()}
-                            {this.loadTWLink()}
-
+                                {this.loadYTLink()}
+                                {this.loadFBLink()}
+                                {this.loadTWLink()}
+                            </tbody>
                         </table>
 
                     </div>
