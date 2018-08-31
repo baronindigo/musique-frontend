@@ -18,7 +18,7 @@ class Home extends Component {
         singleUser(this.state.id).then((user) => {
 
             let thisUser = user.data.data.singleUser;
-            debugger;
+
             this.setState({
                 firstName  : thisUser.firstName,
                 lastName   : thisUser.lastName,
@@ -30,8 +30,15 @@ class Home extends Component {
                 urlYT      : thisUser.urlYT,
                 urlFB      : thisUser.urlFB,
                 urlTW      : thisUser.urlTW,
-                instrument : thisUser.instrument.name
+                
             })
+
+            if (user.instrument !== null) {
+                this.setState({
+                    instrument : thisUser.instrument.name
+                })
+            }
+
         }).catch((err) => {
             console.log(err);
         })
@@ -53,6 +60,61 @@ class Home extends Component {
                 videoId="RVp5ldfuaus" 
                 opts={playerOptions} />
         )
+    }
+
+    loadGenre() {
+        if (this.state.genre) {
+            return(
+                <tr>
+                    <td>Genre:</td>
+                    <td>{this.state.genre}</td>
+                </tr>
+            )
+        }
+    }
+
+    loadLocation() {
+        if (this.state.location) {
+            return(
+                <tr>
+                    <td>Location:</td>
+                    <td>{this.state.location}</td>
+                </tr>
+            )
+        }
+    }
+
+    loadFBLink() {
+        if (this.state.urlFB) {
+            return(
+                <tr>
+                    <td><FaFacebook /></td>
+                    <td><a href={this.state.urlFB} target="_blank">{this.state.urlFB}</a></td>
+                </tr>
+            )
+        }
+    }
+
+    loadTWLink() {
+        if (this.state.urlTW) {
+            return(
+                <tr>
+                    <td><FaTwitter /></td>
+                    <td><a href={this.state.urlTW} target="_blank">{this.state.urlTW}</a></td>
+                </tr>
+            )
+        }
+    }
+
+    loadYTLink() {
+        if (this.state.urlYT) {
+            return(
+                <tr>
+                    <td><FaYoutube /></td>
+                    <td><a href={this.state.urlYT} target="_blank">{this.state.urlYT}</a></td>
+                </tr>
+            )
+        }
     }
 
     render() {
@@ -88,35 +150,19 @@ class Home extends Component {
                                 <td>{this.state.phone}</td>
                             </tr>
 
-                            <tr>
-                                <td>Genre:</td>
-                                <td>{this.state.genre}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Location:</td>
-                                <td>{this.state.location}</td>
-                            </tr>
+                            
+                            {this.loadGenre()}
+                            {this.loadLocation()}
+                            
 
                             <tr>
                                 <td>Instrument:</td>
                                 <td>{this.state.instrument}</td>
                             </tr>
 
-                            <tr>
-                                <td><FaYoutube /></td>
-                                <td><a href={this.state.urlYT} target="_blank">{this.state.urlYT}</a></td>
-                            </tr>
-
-                            <tr>
-                                <td><FaFacebook /></td>
-                                <td><a href={this.state.urlFB} target="_blank">{this.state.urlFB}</a></td>
-                            </tr>
-
-                            <tr>
-                                <td><FaTwitter /></td>
-                                <td><a href={this.state.urlTW} target="_blank">{this.state.urlTW}</a></td>
-                            </tr>
+                            {this.loadYTLink()}
+                            {this.loadFBLink()}
+                            {this.loadTWLink()}
 
                         </table>
 
