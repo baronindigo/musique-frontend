@@ -11,8 +11,8 @@
 }
 
 .general-text-format{
-    text-align: center;
-    padding-left: 6rem;
+    /*text-align: center;
+    padding-left: 6rem;*/
 }
 
 .shadow-box{
@@ -23,7 +23,7 @@
     font-family: 'Roboto';
     font-size:2rem;
     font-weight: bold;
-    padding: 0rem 7rem 0rem 7rem!important;
+    /*padding: 0rem 7rem 0rem 7rem!important;*/
 }
 
 .instrument-format{
@@ -38,15 +38,17 @@
 }
 
 .video-location{
-    position: relative;
-    top: 140px;
-    right: 150px;
-    z-index: 999;
+    display: inline-block;
+}
 
+.video-location iframe {
+    width: 100%;
+    height: auto;
+    max-width: 66.66%;
 }
 
 .info-position{
-    position: relative;
-    top: 50px;
-    left: 100px;
+    display: inline-block;
+    margin: 10px auto;
+    max-width: 66.66%;
 }

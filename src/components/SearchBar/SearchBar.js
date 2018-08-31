@@ -1,6 +1,7 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import allInstruments from '../../services/allInstruments';
 
+import './SearchBar.css';
 
 class SearchBar extends Component{
 

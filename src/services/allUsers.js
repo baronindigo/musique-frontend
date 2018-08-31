@@ -18,7 +18,10 @@ export default () => {
                             _id
                         },
                         location,
-                        photo
+                        photo,
+                        urlFB,
+                        urlTW,
+                        urlYT
                     }
                 }
             `
