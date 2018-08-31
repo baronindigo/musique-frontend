@@ -109,12 +109,12 @@ class Profile extends Component{
         return(
             <div>
                 <section>
-                    <div className = "container-fluid">
-                        <div className = "row flex-lg-row-reverse general-vp-style">
-                            <div className = "col-lg-6 d-flex align-items-lg-center img-vp-style video-location">
+                    <div className="container-fluid">
+                        <div className="">
+                            <div className="col-sm-8 col-lg-6 video-location">
                                 {this.loadUserVideo()}
                             </div>
-                            <div className = "col-lg-6 d-lg-flex align-items-lg-center shadow-box info-position">
+                            <div className="col-sm-8 col-lg-6 shadow-box info-position">
                                 {this.renderUserInfo()}
                             </div>
                         </div>

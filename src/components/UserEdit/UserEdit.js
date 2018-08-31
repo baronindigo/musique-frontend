@@ -65,7 +65,7 @@ class UserEdit extends Component {
         })
         return(
             <select name={name} id={name} value={this.state[name]} onChange={this.onChangeInput} className="form-control">
-                <option value=""> --- </option>
+                <option value=""> Select Instrument </option>
                 {options}
             </select>
         )
@@ -111,7 +111,7 @@ class UserEdit extends Component {
             return(
                 <div className="container">
                     <div className="row">
-                        <div className="user-page col-sm-8 col-md-8 col-lg-8">
+                        <div className="user-page col-sm-8 col-md-8 col-lg-4">
                             <form onSubmit={this.handleSubmit}>
 
                                 <div className="form-group user-photo">

@@ -120,7 +120,7 @@ class Home extends Component {
         return(
             <div className="container">
                 <div className="row">
-                    <div className='user-page col-sm-8 col-md-8 col-lg-8'>
+                    <div className='user-page col-sm-8 col-md-8 col-lg-4'>
                         <div className='user-photo-container'>
                             <div className="user-photo">
                                 <img src={this.state.photo} alt="Profile"/>
