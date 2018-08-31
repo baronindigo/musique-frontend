@@ -1,4 +1,4 @@
 export default {
-    url   : "http://localhost:3000/",
+    url   : "https://musicsoul.herokuapp.com/",
     local : "http://localhost:3000/",
 }
