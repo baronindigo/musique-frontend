@@ -14,7 +14,7 @@
     "react-icons": "^3.0.5",
     "react-portal-tooltip": "^2.4.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^3.2.0",
     "react-youtube": "^7.6.0",
     "reactjs-popup": "^1.2.0"
   },
